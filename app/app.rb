@@ -4,7 +4,7 @@ require 'payload'
 class App
   def self.app
     @app ||= Rack::Builder.new {
-      run API
+      	run API
     }
   end
 end

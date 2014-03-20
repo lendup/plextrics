@@ -1,4 +1,5 @@
 class Service
+
   def log(events)
     events.each do |event|
       if event[:type] == 'sample'

@@ -4,7 +4,7 @@ gem 'grape'
 gem 'faraday'
 gem 'activesupport'
 gem 'puma'
-gem 'stathat'
+gem 'em-stathat'
 gem 'format'
 
 group :development do
