@@ -8,5 +8,6 @@ gem 'stathat'
 gem 'format'
 
 group :development do
+  gem 'shotgun'
   gem 'foreman'
 end

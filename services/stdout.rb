@@ -5,11 +5,11 @@ class Service::Stdout < Service
     super
   end
 
-  def count(metric)
-    puts "Log: #{metric}"
+  def count(event)
+    puts "count: #{event}"
   end
 
-  def gauge(metric, value)
-    puts "Log: #{metric}, #{value}"
+  def gauge(event)
+    puts "gauge: #{event}"
   end
 end

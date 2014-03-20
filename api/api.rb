@@ -11,8 +11,11 @@ class API < Grape::API
   end
 
   post ':service' do
-    events = Payload.parse(request.env['rack.input'].read)
     service = "Service::#{params[:service].capitalize}".constantize.new(params)
-    service.log(events)
+    request.env['rack.input'].each do |line|
+      payload = Payload.parse(line)
+      service.log(payload) if !payload.nil?
+    end
+    'OK'
   end
 end

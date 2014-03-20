@@ -1,10 +1,10 @@
 class Service
   def log(events)
     events.each do |event|
-      if event.has_key? :value
-        gauge(event[:metric], event[:value])
+      if event[:type] == 'sample'
+        gauge(event)
       else
-        gauge(event[:metric])
+        count(event)
       end
     end
   end

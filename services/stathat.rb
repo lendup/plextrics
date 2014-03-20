@@ -6,11 +6,19 @@ class Service::Stathat < Service
     @ezkey = params[:ezkey]
   end
 
-  def count(metric)
-	StatHat::API.ez_post_count(metric, ezkey, value)
+  def get_metric_name(event) 
+  	name = event[:metric]
+  	name = "#{event[:metric]}~total,#{event[:ps]}" if event.has_key? :ps
+  	name
   end
 
-  def gauge(metric, value)
-  	StatHat::API.ez_post_value(metric, ezkey, value)
+  def count(event)
+  	#puts "count: #{get_metric_name(event)}, #{event[:value]}"
+	puts StatHat::API.ez_post_count(get_metric_name(event), ezkey, event[:value])
+  end
+
+  def gauge(event)
+  	#puts "gauge: #{get_metric_name(event)}, #{event[:value]}"
+  	puts StatHat::API.ez_post_value(get_metric_name(event), ezkey, event[:value])
   end
 end
