@@ -13,12 +13,12 @@ class Service::Stathat < Service
   end
 
   def count(event)
-  	#puts "count: #{get_metric_name(event)}, #{event[:value]}"
+  	puts "#{ezkey} count: #{get_metric_name(event)}, #{event[:value]}"
 	StatHat::API.ez_post_count(get_metric_name(event), ezkey, event[:value])
   end
 
   def gauge(event)
-  	#puts "gauge: #{get_metric_name(event)}, #{event[:value]}"
+  	puts "#{ezkey} gauge: #{get_metric_name(event)}, #{event[:value]}"
   	StatHat::API.ez_post_value(get_metric_name(event), ezkey, event[:value])
   end
 end
