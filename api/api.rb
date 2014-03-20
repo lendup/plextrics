@@ -3,6 +3,8 @@ class API < Grape::API
 
   version 'v1', using: :header, vendor: 'reader'
   format :json
+  content_type :plx, "application/logplex-1"
+
 
   get do
     'Ok'
