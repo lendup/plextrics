@@ -47,7 +47,7 @@ class Payload
             datum[:metric] = "router." + key  
             datum[:value] = val1      
             case key
-            when "service" || "connect"
+            when "service", "connect"
               datum[:type] = "sample"
             when "bytes"
               datum[:type] = "count"
