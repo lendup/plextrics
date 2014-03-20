@@ -7,4 +7,4 @@ Bundler.require :default, ENV['RACK_ENV']
 require 'uri'
 require 'api'
 require 'app'
-Dir[File.expand_path('../..', __FILE__) + 'services/**/**.rb'].each { |f| require f }
+Dir[File.expand_path('../..', __FILE__) + 'services/**.rb'].each { |f| require f }
