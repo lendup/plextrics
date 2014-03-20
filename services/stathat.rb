@@ -13,12 +13,18 @@ class Service::Stathat < Service
   end
 
   def count(event)
-  	#puts "count: #{get_metric_name(event)}, #{event[:value]}"
-	StatHat::API.ez_post_count(get_metric_name(event), ezkey, event[:value])
+		StatHat::API.ez_post_count(get_metric_name(event), ezkey, event[:value]) do |r|
+	    unless r.valid?
+	      puts "Error sending data to StatHat.  Status #{r.status}, Message: #{r.msg}."
+	    end
+    end
   end
 
   def gauge(event)
-  	#puts "gauge: #{get_metric_name(event)}, #{event[:value]}"
-  	StatHat::API.ez_post_value(get_metric_name(event), ezkey, event[:value])
+  	StatHat::API.ez_post_value(get_metric_name(event), ezkey, event[:value]) do |r|
+	    unless r.valid?
+	      puts "Error sending data to StatHat.  Status #{r.status}, Message: #{r.msg}."
+	    end
+    end
   end
 end
