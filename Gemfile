@@ -6,6 +6,7 @@ gem 'activesupport'
 gem 'puma'
 gem 'stathat'
 gem 'format'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'shotgun'
