@@ -26,7 +26,7 @@ class Common
                         # log this temporarily for debugging
                         puts "Stat send " + args[:stat] + ", status: " + resp.code 
 
-                        return Response.new(resp)
+                        return resp
                 end
         end
 end
