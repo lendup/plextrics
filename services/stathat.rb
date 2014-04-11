@@ -142,7 +142,7 @@ class Reporter
                                 i = 0
                                 while true do
 
-                                        if i >= 5 then
+                                        if i >= 100 then
                                             puts "Queue Size: " + @que.length()
                                             i = 0
                                         end
