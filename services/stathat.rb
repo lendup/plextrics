@@ -21,7 +21,11 @@ class Common
                                 uri.query = args.map { |arg, val| arg.to_s + "=" + CGI::escape(val.to_s) }.join('&')
                         end
 
-                        resp = Net::HTTP.get(uri)
+                        resp = Net::HTTP.get_response(uri)
+
+                        # log this temporarily for debugging
+                        puts "Stat send " + args[:stat] + ", status: " + resp.code 
+
                         return Response.new(resp)
                 end
         end
