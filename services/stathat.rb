@@ -139,7 +139,14 @@ class Reporter
                 @pool = []
                 5.times do |i|
                         @pool[i] = Thread.new do
+                                i = 0
                                 while true do
+
+                                        if i >= 5 then
+                                            puts "Queue Size: " + @que.length()
+                                            i = 0
+                                        end
+
                                         point = @que.pop
                                         # XXX check for error?
                                         begin
@@ -153,6 +160,8 @@ class Reporter
                                         @runlock.synchronize {
                                                 break unless @running
                                         }
+
+                                        i += 1
                                 end
                         end
                 end
